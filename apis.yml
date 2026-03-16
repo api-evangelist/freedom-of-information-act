@@ -1,5 +1,5 @@
 aid: freedom-of-information-act
-name: Freedom of Information Act (FOIA)
+name: Freedom of Information Act
 description: >-
   The Freedom of Information Act (FOIA) API provides access to FOIA request
   data and related information from federal agencies.
