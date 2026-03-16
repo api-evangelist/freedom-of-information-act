@@ -1,28 +1,33 @@
+aid: freedom-of-information-act
 name: Freedom of Information Act (FOIA)
-description: This is the description.
+description: >-
+  The Freedom of Information Act (FOIA) API provides access to FOIA request
+  data and related information from federal agencies.
+type: Index
 image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 url: >-
-  https://raw.githubusercontent.com/api-search/us-federal-government/main/_apis/freedom-of-information-act/apis.md
-created: 2024/01/01
-modified: 2024/01/01
-specificationVersion: '0.16'
-tags: []
+  https://raw.githubusercontent.com/api-evangelist/freedom-of-information-act/refs/heads/main/apis.yml
+created: '2024-01-01'
+modified: '2026-03-16'
+specificationVersion: '0.19'
+tags:
+  - Federal Government
+  - Transparency
+  - FOIA
 apis:
-  - name: Freedom of Information Act (FOIA) API
-    description: This is the description.
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  - aid: freedom-of-information-act:freedom-of-information-act-foia-api
+    name: Freedom of Information Act (FOIA) API
+    description: The FOIA API provides access to public FOIA request data.
     humanURL: https://www.foia.gov/developer/
-    baseURL: https://api.example.com
     tags: []
     properties:
       - type: Documentation
         url: https://www.foia.gov/developer/
-    aid: freedom-of-information-act-foia:freedom-of-information-act-foia-api
 common:
   - type: Portal
     url: https://www.foia.gov/developer/
+  - type: Website
+    url: https://www.foia.gov/
 maintainers:
-  - FN: API Evangelist
-    url: http://apievangelist.com
-    email: info@apievangelist.com
-aid: freedom-of-information-act-foia
+  - FN: Kin Lane
+    email: kin@apievangelist.com
