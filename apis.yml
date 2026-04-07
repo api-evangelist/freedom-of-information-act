@@ -12,8 +12,8 @@ modified: '2026-03-16'
 specificationVersion: '0.19'
 tags:
   - Federal Government
-  - Transparency
   - FOIA
+  - Transparency
 apis:
   - aid: freedom-of-information-act:freedom-of-information-act-foia-api
     name: Freedom of Information Act (FOIA) API
