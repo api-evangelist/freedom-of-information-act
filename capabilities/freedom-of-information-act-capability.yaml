@@ -1,0 +1,291 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Freedom of Information Act (FOIA) API
+  description: Public APIs published by FOIA.gov, including the Agency Components API (Drupal JSON:API) for browsing federal
+    agencies and their FOIA components, and the Annual Report XML API for retrieving an agency's FOIA annual report. A separate
+    Agency API specification defines how the FOIA.gov portal submits requests to participating agencies.
+  tags:
+  - Freedom
+  - Of
+  - Information
+  - Act
+  - API
+  created: '2026-05-06'
+  modified: '2026-05-06'
+capability:
+  consumes:
+  - type: http
+    namespace: freedom-of-information-act
+    baseUri: https://api.foia.gov
+    description: Freedom of Information Act (FOIA) API HTTP API.
+    authentication:
+      type: apikey
+      in: header
+      name: X-API-Key
+      value: '{{FREEDOM_OF_INFORMATION_ACT_TOKEN}}'
+    resources:
+    - name: api-agency-components
+      path: /api/agency_components
+      operations:
+      - name: listagencycomponents
+        method: GET
+        description: List agency components
+        inputParameters:
+        - name: fields[agency_component]
+          in: query
+          type: string
+          description: Sparse fieldset for agency_component.
+        - name: fields[agency]
+          in: query
+          type: string
+          description: Sparse fieldset for agency.
+        - name: include
+          in: query
+          type: string
+          description: Related resources to include (e.g., agency).
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-agency-components-id
+      path: /api/agency_components/{id}
+      operations:
+      - name: getagencycomponent
+        method: GET
+        description: Get agency component
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-agency-components-id-request-form
+      path: /api/agency_components/{id}/request_form
+      operations:
+      - name: getagencycomponentrequestform
+        method: GET
+        description: Get an agency component's request form
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-annual-report-xml-agencyabbreviation-year
+      path: /api/annual-report-xml/{agencyAbbreviation}/{year}
+      operations:
+      - name: getannualreportxml
+        method: GET
+        description: Get an agency annual FOIA report
+        inputParameters:
+        - name: agencyAbbreviation
+          in: path
+          type: string
+          required: true
+        - name: year
+          in: path
+          type: integer
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: components-id-requests
+      path: /components/{id}/requests/
+      operations:
+      - name: submitagencyrequest
+        method: POST
+        description: Submit a FOIA request to an agency component
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          required: true
+          description: Unique identifier for the agency component.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    port: 8080
+    namespace: freedom-of-information-act-rest
+    description: REST adapter for Freedom of Information Act (FOIA) API.
+    resources:
+    - path: /api/agency_components
+      name: listagencycomponents
+      operations:
+      - method: GET
+        name: listagencycomponents
+        description: List agency components
+        call: freedom-of-information-act.listagencycomponents
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /api/agency_components/{id}
+      name: getagencycomponent
+      operations:
+      - method: GET
+        name: getagencycomponent
+        description: Get agency component
+        call: freedom-of-information-act.getagencycomponent
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /api/agency_components/{id}/request_form
+      name: getagencycomponentrequestform
+      operations:
+      - method: GET
+        name: getagencycomponentrequestform
+        description: Get an agency component's request form
+        call: freedom-of-information-act.getagencycomponentrequestform
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /api/annual-report-xml/{agencyAbbreviation}/{year}
+      name: getannualreportxml
+      operations:
+      - method: GET
+        name: getannualreportxml
+        description: Get an agency annual FOIA report
+        call: freedom-of-information-act.getannualreportxml
+        with:
+          agencyAbbreviation: rest.agencyAbbreviation
+          year: rest.year
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /components/{id}/requests/
+      name: submitagencyrequest
+      operations:
+      - method: POST
+        name: submitagencyrequest
+        description: Submit a FOIA request to an agency component
+        call: freedom-of-information-act.submitagencyrequest
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9090
+    namespace: freedom-of-information-act-mcp
+    transport: http
+    description: MCP adapter for Freedom of Information Act (FOIA) API for AI agent use.
+    tools:
+    - name: listagencycomponents
+      description: List agency components
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: freedom-of-information-act.listagencycomponents
+      with:
+        fields[agency_component]: tools.fields[agency_component]
+        fields[agency]: tools.fields[agency]
+        include: tools.include
+      inputParameters:
+      - name: fields[agency_component]
+        type: string
+        description: Sparse fieldset for agency_component.
+      - name: fields[agency]
+        type: string
+        description: Sparse fieldset for agency.
+      - name: include
+        type: string
+        description: Related resources to include (e.g., agency).
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getagencycomponent
+      description: Get agency component
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: freedom-of-information-act.getagencycomponent
+      with:
+        id: tools.id
+      inputParameters:
+      - name: id
+        type: string
+        description: id
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getagencycomponentrequestform
+      description: Get an agency component's request form
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: freedom-of-information-act.getagencycomponentrequestform
+      with:
+        id: tools.id
+      inputParameters:
+      - name: id
+        type: string
+        description: id
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getannualreportxml
+      description: Get an agency annual FOIA report
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: freedom-of-information-act.getannualreportxml
+      with:
+        agencyAbbreviation: tools.agencyAbbreviation
+        year: tools.year
+      inputParameters:
+      - name: agencyAbbreviation
+        type: string
+        description: agencyAbbreviation
+        required: true
+      - name: year
+        type: integer
+        description: year
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: submitagencyrequest
+      description: Submit a FOIA request to an agency component
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: freedom-of-information-act.submitagencyrequest
+      with:
+        id: tools.id
+      inputParameters:
+      - name: id
+        type: integer
+        description: Unique identifier for the agency component.
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+binds:
+- namespace: env
+  keys:
+    FREEDOM_OF_INFORMATION_ACT_TOKEN: FREEDOM_OF_INFORMATION_ACT_TOKEN
