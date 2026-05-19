@@ -1,0 +1,87 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Freedom of Information Act (FOIA) API — Annual Reports
+  description: 'Freedom of Information Act (FOIA) API — Annual Reports. 1 operations. Lead operation: Get an agency annual
+    FOIA report. Self-contained Naftiko capability covering one Freedom Of Information Act business surface.'
+  tags:
+  - Freedom Of Information Act
+  - Annual Reports
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    FREEDOM_OF_INFORMATION_ACT_API_KEY: FREEDOM_OF_INFORMATION_ACT_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: freedom-of-information-act-annual-reports
+    baseUri: https://api.foia.gov
+    description: Freedom of Information Act (FOIA) API — Annual Reports business capability. Self-contained, no shared references.
+    resources:
+    - name: api-annual-report-xml-agencyAbbreviation-year
+      path: /api/annual-report-xml/{agencyAbbreviation}/{year}
+      operations:
+      - name: getannualreportxml
+        method: GET
+        description: Get an agency annual FOIA report
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: agencyAbbreviation
+          in: path
+          type: string
+          required: true
+        - name: year
+          in: path
+          type: integer
+          required: true
+    authentication:
+      type: apikey
+      key: X-API-Key
+      value: '{{env.FREEDOM_OF_INFORMATION_ACT_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: freedom-of-information-act-annual-reports-rest
+    port: 8080
+    description: REST adapter for Freedom of Information Act (FOIA) API — Annual Reports. One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/api/annual-report-xml/{agencyabbreviation}/{year}
+      name: api-annual-report-xml-agencyabbreviation-year
+      description: REST surface for api-annual-report-xml-agencyAbbreviation-year.
+      operations:
+      - method: GET
+        name: getannualreportxml
+        description: Get an agency annual FOIA report
+        call: freedom-of-information-act-annual-reports.getannualreportxml
+        with:
+          agencyAbbreviation: rest.agencyAbbreviation
+          year: rest.year
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: freedom-of-information-act-annual-reports-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Freedom of Information Act (FOIA) API — Annual Reports. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: get-agency-annual-foia-report
+      description: Get an agency annual FOIA report
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: freedom-of-information-act-annual-reports.getannualreportxml
+      with:
+        agencyAbbreviation: tools.agencyAbbreviation
+        year: tools.year
+      outputParameters:
+      - type: object
+        mapping: $.
