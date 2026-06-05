@@ -1,36 +1,45 @@
 # Freedom of Information Act (freedom-of-information-act)
-The Freedom of Information Act (FOIA) APIs published by FOIA.gov provide access to FOIA agency components (Drupal JSON:API), agency annual report XML, and the agency submission specification used by participating federal agencies.
 
-**URL:** [Visit APIs.json URL](https://raw.githubusercontent.com/api-evangelist/freedom-of-information-act/refs/heads/main/apis.yml)
+The Freedom of Information Act (FOIA) API provides access to FOIA request data and related information from federal agencies.
+
+**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/freedom-of-information-act/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/freedom-of-information-act/refs/heads/main/apis.yml)
 
 ## Scope
 
 - **Type:** Index
-- **Position:** Consumer
-- **Access:** 3rd-Party
 
-## Tags:
+## Tags
 
- - Federal Government, FOIA, Transparency
+- Federal Government
+- FOIA
+- Transparency
 
 ## Timestamps
 
 - **Created:** 2024-01-01
-- **Modified:** 2026-04-28
+- **Modified:** 2026-05-19
 
 ## APIs
 
 ### Freedom of Information Act (FOIA) API
-The FOIA API exposes agency components (`/api/agency_components`, `/api/agency_components/{id}`, `/api/agency_components/{id}/request_form`) and annual report XML (`/api/annual-report-xml/{agency}/{year}`) at `https://api.foia.gov`. Public APIs require an `X-API-Key` header. The portal-to-agency submission API uses a `FOIA-API-SECRET` shared-secret header and is implemented at each participating agency (recommended host: `foia-api.agency.gov`).
 
-**Human URL:** [https://www.foia.gov/developer/](https://www.foia.gov/developer/)
+The FOIA API provides access to public FOIA request data, agency components, and annual report XML, plus the agency submission specification used by participating agencies.
 
-**Base URL:** `https://api.foia.gov`
+- **Human URL:** [https://www.foia.gov/developer/](https://www.foia.gov/developer/)
+- **Base URL:** `https://api.foia.gov`
+
+#### Tags
+
+- Federal Government
+- FOIA
+- Transparency
 
 #### Properties
 
 - [Documentation](https://www.foia.gov/developer/)
-- [OpenAPI](openapi/freedom-of-information-act-openapi.yml)
+- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/freedom-of-information-act/refs/heads/main/openapi/freedom-of-information-act-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Postman Collection](collections/freedom-of-information-act.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/freedom-of-information-act.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
 
 ## Common Properties
 
@@ -40,5 +49,4 @@ The FOIA API exposes agency components (`/api/agency_components`, `/api/agency_c
 ## Maintainers
 
 **FN:** Kin Lane
-
 **Email:** kin@apievangelist.com
