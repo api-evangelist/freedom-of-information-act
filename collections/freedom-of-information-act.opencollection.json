@@ -1,0 +1,161 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Freedom of Information Act (FOIA) API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-API-Key",
+      "value": "{{X-API-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Agency Components",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List agency components",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.foia.gov/api/agency_components",
+            "params": [
+              {
+                "name": "fields[agency_component]",
+                "value": "",
+                "type": "query",
+                "description": "Sparse fieldset for agency_component."
+              },
+              {
+                "name": "fields[agency]",
+                "value": "",
+                "type": "query",
+                "description": "Sparse fieldset for agency."
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "Related resources to include (e.g., agency)."
+              }
+            ]
+          },
+          "docs": "List FOIA agency components. Follows the JSON:API specification (Drupal JSON:API module)."
+        },
+        {
+          "info": {
+            "name": "Get agency component",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.foia.gov/api/agency_components/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get agency component"
+        },
+        {
+          "info": {
+            "name": "Get an agency component's request form",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.foia.gov/api/agency_components/:id/request_form",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get an agency component's request form"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Annual Reports",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get an agency annual FOIA report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.foia.gov/api/annual-report-xml/:agencyAbbreviation/:year",
+            "params": [
+              {
+                "name": "agencyAbbreviation",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "year",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns the agency's annual FOIA report XML for the given year."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Agency Submission",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Submit a FOIA request to an agency component",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.foia.gov/components/:id/requests/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the agency component."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "FOIA-API-SECRET",
+              "value": "{{FOIA-API-SECRET}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Submit a FOIA request from the National FOIA Portal to an agency component. Agencies implement this endpoint at their own host (recommended: `foia-api.agency.gov`)."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

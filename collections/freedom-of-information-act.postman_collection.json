@@ -1,0 +1,732 @@
+{
+  "item": [
+    {
+      "id": "eb9ded63-0cb9-4e95-8525-e0193d86cf99",
+      "name": "Agency Components",
+      "description": {
+        "content": "Agencies and their FOIA components.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1424767c-d76b-4a37-bdc6-bd77d2482b65",
+          "name": "List agency components",
+          "request": {
+            "name": "List agency components",
+            "description": {
+              "content": "List FOIA agency components. Follows the JSON:API specification (Drupal JSON:API module).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "agency_components"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields[agency_component]",
+                  "value": "<string>",
+                  "description": "Sparse fieldset for agency_component."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[agency]",
+                  "value": "<string>",
+                  "description": "Sparse fieldset for agency."
+                },
+                {
+                  "disabled": false,
+                  "key": "include",
+                  "value": "<string>",
+                  "description": "Related resources to include (e.g., agency)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.api+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4f4e728e-e1f3-4934-973d-f95d46028f45",
+              "name": "List of agency components.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "agency_components"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields[agency_component]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields[agency]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.api+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.api+json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fd825534-c628-4ed7-8284-cff0b20a3756",
+          "name": "Get agency component",
+          "request": {
+            "name": "Get agency component",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "agency_components",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.api+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4cfd9abd-e29f-41db-b3ec-40fa9fe1b7ee",
+              "name": "Agency component detail.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "agency_components",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.api+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.api+json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9338ad59-d7f9-42e7-92fd-9c112414ad7a",
+          "name": "Get an agency component's request form",
+          "request": {
+            "name": "Get an agency component's request form",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "agency_components",
+                ":id",
+                "request_form"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6535c1c3-6c1b-4f4d-a775-e8a02bb32706",
+              "name": "Request form for the component.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "agency_components",
+                    ":id",
+                    "request_form"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "5de7ea7f-2826-4555-bae0-469b5c5670c7",
+      "name": "Annual Reports",
+      "description": {
+        "content": "Agency annual FOIA reports as XML.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a04a8b1c-411a-4b3a-a78a-aec780a893d7",
+          "name": "Get an agency annual FOIA report",
+          "request": {
+            "name": "Get an agency annual FOIA report",
+            "description": {
+              "content": "Returns the agency's annual FOIA report XML for the given year.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "annual-report-xml",
+                ":agencyAbbreviation",
+                ":year"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "agencyAbbreviation",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "year",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/xml"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "292ad79a-49ea-46a3-a2b4-190e5e0fd75b",
+              "name": "Annual report XML.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "annual-report-xml",
+                    ":agencyAbbreviation",
+                    ":year"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "agencyAbbreviation",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "year",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/xml"
+                }
+              ],
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>(string)</element>",
+              "cookie": [],
+              "_postman_previewlanguage": "xml"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "7648bd73-a73a-40e2-84b2-1c5e1ec42ea4",
+      "name": "Agency Submission",
+      "description": {
+        "content": "Portal-to-agency request submission API (implemented by participating agencies at foia-api.agency.gov).",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "bed3c441-9272-4634-9821-3d3110421b15",
+          "name": "Submit a FOIA request to an agency component",
+          "request": {
+            "name": "Submit a FOIA request to an agency component",
+            "description": {
+              "content": "Submit a FOIA request from the National FOIA Portal to an agency component. Agencies implement this endpoint at their own host (recommended: `foia-api.agency.gov`).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "components",
+                ":id",
+                "requests",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) Unique identifier for the agency component."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "FOIA-API-SECRET"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"version\": \"<string>\",\n  \"request_id\": \"<integer>\",\n  \"agency\": \"<string>\",\n  \"agency_component_name\": \"<string>\",\n  \"request_description\": \"<string>\",\n  \"pdf\": \"<object>\",\n  \"testing\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7d00b936-6646-4e24-b99b-b1013943a5ae",
+              "name": "Request accepted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "components",
+                    ":id",
+                    "requests",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Unique identifier for the agency component."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "FOIA-API-SECRET",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"version\": \"<string>\",\n  \"request_id\": \"<integer>\",\n  \"agency\": \"<string>\",\n  \"agency_component_name\": \"<string>\",\n  \"request_description\": \"<string>\",\n  \"pdf\": \"<object>\",\n  \"testing\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 780,\n  \"status_tracking_number\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4a512980-314e-4814-967d-8aeadaf8069b",
+              "name": "Component not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "components",
+                    ":id",
+                    "requests",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Unique identifier for the agency component."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "FOIA-API-SECRET",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"version\": \"<string>\",\n  \"request_id\": \"<integer>\",\n  \"agency\": \"<string>\",\n  \"agency_component_name\": \"<string>\",\n  \"request_description\": \"<string>\",\n  \"pdf\": \"<object>\",\n  \"testing\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "96fb3e57-4b7b-40ad-9218-b45362acff6e",
+              "name": "Internal server error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "components",
+                    ":id",
+                    "requests",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Unique identifier for the agency component."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "FOIA-API-SECRET",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"version\": \"<string>\",\n  \"request_id\": \"<integer>\",\n  \"agency\": \"<string>\",\n  \"agency_component_name\": \"<string>\",\n  \"request_description\": \"<string>\",\n  \"pdf\": \"<object>\",\n  \"testing\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.foia.gov",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-API-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "409ead6f-c650-475e-b244-ea813ecc192d",
+    "name": "Freedom of Information Act (FOIA) API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Public APIs published by FOIA.gov, including the Agency Components API (Drupal JSON:API) for browsing federal agencies and their FOIA components, and the Annual Report XML API for retrieving an agency's FOIA annual report. A separate Agency API specification defines how the FOIA.gov portal submits requests to participating agencies.\n\nContact Support:\n Name: National FOIA Portal\n Email: National.FOIAPortal@usdoj.gov",
+      "type": "text/plain"
+    }
+  }
+}
