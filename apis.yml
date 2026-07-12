@@ -32,6 +32,10 @@ apis:
         url: >-
           https://raw.githubusercontent.com/api-evangelist/freedom-of-information-act/refs/heads/main/openapi/freedom-of-information-act-openapi.yml
 common:
+  - type: DomainSecurity
+    url: security/freedom-of-information-act-domain-security.yml
+  - type: Authentication
+    url: authentication/freedom-of-information-act-authentication.yml
   - type: Portal
     url: https://www.foia.gov/developer/
   - type: Website

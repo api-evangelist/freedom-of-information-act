@@ -1,0 +1,23 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/freedom-of-information-act-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: ApiKey
+  type: apiKey
+  in: header
+  parameter: X-API-Key
+  description: API key for FOIA.gov public APIs.
+  sources:
+  - openapi/freedom-of-information-act-openapi.yml
+- name: SharedSecret
+  type: apiKey
+  in: header
+  parameter: FOIA-API-SECRET
+  description: Shared secret token between Portal and agency.
+  sources:
+  - openapi/freedom-of-information-act-openapi.yml
