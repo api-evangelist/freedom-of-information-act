@@ -32,6 +32,8 @@ apis:
         url: >-
           https://raw.githubusercontent.com/api-evangelist/freedom-of-information-act/refs/heads/main/openapi/freedom-of-information-act-openapi.yml
 common:
+  - type: AgenticAccess
+    url: agentic-access/freedom-of-information-act-agentic-access.yml
   - type: DomainSecurity
     url: security/freedom-of-information-act-domain-security.yml
   - type: Authentication
