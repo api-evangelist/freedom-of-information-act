@@ -1,0 +1,95 @@
+openapi: 3.1.0
+info:
+  title: Freedom of Information Act (FOIA) Agency Components Agency Submission API
+  description: Public APIs published by FOIA.gov, including the Agency Components API (Drupal JSON:API) for browsing federal agencies and their FOIA components, and the Annual Report XML API for retrieving an agency's FOIA annual report. A separate Agency API specification defines how the FOIA.gov portal submits requests to participating agencies.
+  version: '1.0'
+  contact:
+    name: National FOIA Portal
+    email: National.FOIAPortal@usdoj.gov
+    url: https://www.foia.gov/developer/
+servers:
+- url: https://api.foia.gov
+  description: FOIA.gov public API
+security:
+- ApiKey: []
+tags:
+- name: Agency Submission
+  description: Portal-to-agency request submission API (implemented by participating agencies at foia-api.agency.gov).
+paths:
+  /components/{id}/requests/:
+    post:
+      summary: Submit a FOIA request to an agency component
+      description: 'Submit a FOIA request from the National FOIA Portal to an agency component. Agencies implement this endpoint at their own host (recommended: `foia-api.agency.gov`).'
+      operationId: submitAgencyRequest
+      tags:
+      - Agency Submission
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+        description: Unique identifier for the agency component.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AgencyRequest'
+      responses:
+        '200':
+          description: Request accepted.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  status_tracking_number:
+                    type: string
+        '404':
+          description: Component not found.
+        '500':
+          description: Internal server error.
+      security:
+      - SharedSecret: []
+components:
+  schemas:
+    AgencyRequest:
+      type: object
+      required:
+      - version
+      - request_id
+      - agency
+      - agency_component_name
+      - request_description
+      - pdf
+      properties:
+        version:
+          type: string
+        request_id:
+          type: integer
+        agency:
+          type: string
+        agency_component_name:
+          type: string
+        request_description:
+          type: string
+          maxLength: 10000
+        pdf:
+          type: object
+          description: Base64-encoded PDF of complete request.
+        testing:
+          type: boolean
+  securitySchemes:
+    ApiKey:
+      type: apiKey
+      in: header
+      name: X-API-Key
+      description: API key for FOIA.gov public APIs.
+    SharedSecret:
+      type: apiKey
+      in: header
+      name: FOIA-API-SECRET
+      description: Shared secret token between Portal and agency.

@@ -1,0 +1,55 @@
+openapi: 3.1.0
+info:
+  title: Freedom of Information Act (FOIA) Agency Components Annual Reports API
+  description: Public APIs published by FOIA.gov, including the Agency Components API (Drupal JSON:API) for browsing federal agencies and their FOIA components, and the Annual Report XML API for retrieving an agency's FOIA annual report. A separate Agency API specification defines how the FOIA.gov portal submits requests to participating agencies.
+  version: '1.0'
+  contact:
+    name: National FOIA Portal
+    email: National.FOIAPortal@usdoj.gov
+    url: https://www.foia.gov/developer/
+servers:
+- url: https://api.foia.gov
+  description: FOIA.gov public API
+security:
+- ApiKey: []
+tags:
+- name: Annual Reports
+  description: Agency annual FOIA reports as XML.
+paths:
+  /api/annual-report-xml/{agencyAbbreviation}/{year}:
+    get:
+      summary: Get an agency annual FOIA report
+      description: Returns the agency's annual FOIA report XML for the given year.
+      operationId: getAnnualReportXml
+      tags:
+      - Annual Reports
+      parameters:
+      - name: agencyAbbreviation
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: year
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Annual report XML.
+          content:
+            application/xml:
+              schema:
+                type: string
+components:
+  securitySchemes:
+    ApiKey:
+      type: apiKey
+      in: header
+      name: X-API-Key
+      description: API key for FOIA.gov public APIs.
+    SharedSecret:
+      type: apiKey
+      in: header
+      name: FOIA-API-SECRET
+      description: Shared secret token between Portal and agency.
