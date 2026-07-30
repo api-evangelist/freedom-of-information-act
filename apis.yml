@@ -4,7 +4,20 @@ description: >-
   The Freedom of Information Act (FOIA) API provides access to FOIA request data and related information from federal
   agencies.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/freedom-of-information-act.png
 url: https://raw.githubusercontent.com/api-evangelist/freedom-of-information-act/refs/heads/main/apis.yml
 created: '2024-01-01'
 modified: '2026-05-19'
@@ -14,23 +27,43 @@ tags:
   - FOIA
   - Transparency
 apis:
-  - aid: freedom-of-information-act:freedom-of-information-act-foia-api
-    name: Freedom of Information Act (FOIA) API
-    description: >-
-      The FOIA API provides access to public FOIA request data, agency components, and annual report XML, plus the
-      agency submission specification used by participating agencies.
-    humanURL: https://www.foia.gov/developer/
-    baseURL: https://api.foia.gov
-    tags:
-      - Federal Government
-      - FOIA
-      - Transparency
-    properties:
-      - type: Documentation
-        url: https://www.foia.gov/developer/
-      - type: OpenAPI
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/freedom-of-information-act/refs/heads/main/openapi/freedom-of-information-act-openapi.yml
+- aid: freedom-of-information-act:freedom-of-information-act-agency-components-api
+  name: Freedom of Information Act Agency Components API
+  description: Agencies and their FOIA components.
+  humanURL: https://www.foia.gov/developer/
+  baseURL: https://api.foia.gov
+  tags:
+  - Agency Components
+  properties:
+  - type: OpenAPI
+    url: openapi/freedom-of-information-act-agency-components-api-openapi.yml
+  - type: Documentation
+    url: https://www.foia.gov/developer/
+- aid: freedom-of-information-act:freedom-of-information-act-agency-submission-api
+  name: Freedom of Information Act Agency Submission API
+  description: >-
+    Portal-to-agency request submission API (implemented by participating agencies at foia-api.agency.gov).
+  humanURL: https://www.foia.gov/developer/
+  baseURL: https://api.foia.gov
+  tags:
+  - Agency Submission
+  properties:
+  - type: OpenAPI
+    url: openapi/freedom-of-information-act-agency-submission-api-openapi.yml
+  - type: Documentation
+    url: https://www.foia.gov/developer/
+- aid: freedom-of-information-act:freedom-of-information-act-annual-reports-api
+  name: Freedom of Information Act Annual Reports API
+  description: Agency annual FOIA reports as XML.
+  humanURL: https://www.foia.gov/developer/
+  baseURL: https://api.foia.gov
+  tags:
+  - Annual Reports
+  properties:
+  - type: OpenAPI
+    url: openapi/freedom-of-information-act-annual-reports-api-openapi.yml
+  - type: Documentation
+    url: https://www.foia.gov/developer/
 common:
   - type: AgenticAccess
     url: agentic-access/freedom-of-information-act-agentic-access.yml
