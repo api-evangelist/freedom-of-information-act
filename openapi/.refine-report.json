@@ -1,0 +1,18 @@
+{
+  "provider": "freedom-of-information-act",
+  "sources": [
+    "freedom-of-information-act-agency-components-api-openapi.yml",
+    "freedom-of-information-act-agency-submission-api-openapi.yml",
+    "freedom-of-information-act-annual-reports-api-openapi.yml"
+  ],
+  "outputs": [
+    "freedom-of-information-act-agency-components-api-openapi.yml",
+    "freedom-of-information-act-agency-submission-api-openapi.yml",
+    "freedom-of-information-act-annual-reports-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

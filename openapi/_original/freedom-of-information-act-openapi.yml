@@ -1,0 +1,196 @@
+openapi: 3.1.0
+info:
+  title: Freedom of Information Act (FOIA) API
+  description: >-
+    Public APIs published by FOIA.gov, including the Agency Components API
+    (Drupal JSON:API) for browsing federal agencies and their FOIA components,
+    and the Annual Report XML API for retrieving an agency's FOIA annual
+    report. A separate Agency API specification defines how the FOIA.gov
+    portal submits requests to participating agencies.
+  version: '1.0'
+  contact:
+    name: National FOIA Portal
+    email: National.FOIAPortal@usdoj.gov
+    url: https://www.foia.gov/developer/
+servers:
+  - url: https://api.foia.gov
+    description: FOIA.gov public API
+tags:
+  - name: Agency Components
+    description: Agencies and their FOIA components.
+  - name: Annual Reports
+    description: Agency annual FOIA reports as XML.
+  - name: Agency Submission
+    description: Portal-to-agency request submission API (implemented by participating agencies at foia-api.agency.gov).
+paths:
+  /api/agency_components:
+    get:
+      summary: List agency components
+      description: List FOIA agency components. Follows the JSON:API specification (Drupal JSON:API module).
+      operationId: listAgencyComponents
+      tags:
+        - Agency Components
+      parameters:
+        - name: fields[agency_component]
+          in: query
+          description: Sparse fieldset for agency_component.
+          schema:
+            type: string
+        - name: fields[agency]
+          in: query
+          description: Sparse fieldset for agency.
+          schema:
+            type: string
+        - name: include
+          in: query
+          description: Related resources to include (e.g., agency).
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of agency components.
+          content:
+            application/vnd.api+json:
+              schema:
+                type: object
+  /api/agency_components/{id}:
+    get:
+      summary: Get agency component
+      operationId: getAgencyComponent
+      tags:
+        - Agency Components
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Agency component detail.
+          content:
+            application/vnd.api+json:
+              schema:
+                type: object
+  /api/agency_components/{id}/request_form:
+    get:
+      summary: Get an agency component's request form
+      operationId: getAgencyComponentRequestForm
+      tags:
+        - Agency Components
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Request form for the component.
+  /api/annual-report-xml/{agencyAbbreviation}/{year}:
+    get:
+      summary: Get an agency annual FOIA report
+      description: Returns the agency's annual FOIA report XML for the given year.
+      operationId: getAnnualReportXml
+      tags:
+        - Annual Reports
+      parameters:
+        - name: agencyAbbreviation
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: year
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Annual report XML.
+          content:
+            application/xml:
+              schema:
+                type: string
+  /components/{id}/requests/:
+    post:
+      summary: Submit a FOIA request to an agency component
+      description: >-
+        Submit a FOIA request from the National FOIA Portal to an agency
+        component. Agencies implement this endpoint at their own host
+        (recommended: `foia-api.agency.gov`).
+      operationId: submitAgencyRequest
+      tags:
+        - Agency Submission
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+          description: Unique identifier for the agency component.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AgencyRequest'
+      responses:
+        '200':
+          description: Request accepted.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  status_tracking_number:
+                    type: string
+        '404':
+          description: Component not found.
+        '500':
+          description: Internal server error.
+      security:
+        - SharedSecret: []
+components:
+  securitySchemes:
+    ApiKey:
+      type: apiKey
+      in: header
+      name: X-API-Key
+      description: API key for FOIA.gov public APIs.
+    SharedSecret:
+      type: apiKey
+      in: header
+      name: FOIA-API-SECRET
+      description: Shared secret token between Portal and agency.
+  schemas:
+    AgencyRequest:
+      type: object
+      required:
+        - version
+        - request_id
+        - agency
+        - agency_component_name
+        - request_description
+        - pdf
+      properties:
+        version:
+          type: string
+        request_id:
+          type: integer
+        agency:
+          type: string
+        agency_component_name:
+          type: string
+        request_description:
+          type: string
+          maxLength: 10000
+        pdf:
+          type: object
+          description: Base64-encoded PDF of complete request.
+        testing:
+          type: boolean
+security:
+  - ApiKey: []
