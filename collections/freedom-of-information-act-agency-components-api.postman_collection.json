@@ -1,0 +1,343 @@
+{
+  "item": [
+    {
+      "id": "16a0961c-a426-4a4e-a699-0d5cf82c01b0",
+      "name": "Agency Components",
+      "description": {
+        "content": "Agencies and their FOIA components.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1b90b8bb-576c-4fae-b46b-433187ac6202",
+          "name": "List agency components",
+          "request": {
+            "name": "List agency components",
+            "description": {
+              "content": "List FOIA agency components. Follows the JSON:API specification (Drupal JSON:API module).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "agency_components"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields[agency_component]",
+                  "value": "<string>",
+                  "description": "Sparse fieldset for agency_component."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[agency]",
+                  "value": "<string>",
+                  "description": "Sparse fieldset for agency."
+                },
+                {
+                  "disabled": false,
+                  "key": "include",
+                  "value": "<string>",
+                  "description": "Related resources to include (e.g., agency)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.api+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0b94f5d4-7364-4b15-8e9d-9ea11da48230",
+              "name": "List of agency components.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "agency_components"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields[agency_component]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields[agency]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.api+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.api+json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8065bec7-052a-45b5-8d57-c8c8ef317050",
+          "name": "Get agency component",
+          "request": {
+            "name": "Get agency component",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "agency_components",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.api+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "54e9c81d-1f91-48df-81b8-1fae9dd97285",
+              "name": "Agency component detail.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "agency_components",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.api+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.api+json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "490500d3-4de1-4a7d-b53f-5d95776b4655",
+          "name": "Get an agency component's request form",
+          "request": {
+            "name": "Get an agency component's request form",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "agency_components",
+                ":id",
+                "request_form"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "889dff68-23a6-4143-8629-747eae8f7501",
+              "name": "Request form for the component.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "agency_components",
+                    ":id",
+                    "request_form"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.foia.gov",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-API-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "60030964-0b8e-4894-83ae-b75d730b598e",
+    "name": "Freedom of Information Act (FOIA) Agency Components API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Public APIs published by FOIA.gov, including the Agency Components API (Drupal JSON:API) for browsing federal agencies and their FOIA components, and the Annual Report XML API for retrieving an agency's FOIA annual report. A separate Agency API specification defines how the FOIA.gov portal submits requests to participating agencies.\n\nContact Support:\n Name: National FOIA Portal\n Email: National.FOIAPortal@usdoj.gov",
+      "type": "text/plain"
+    }
+  }
+}

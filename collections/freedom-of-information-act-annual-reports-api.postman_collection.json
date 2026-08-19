@@ -1,0 +1,163 @@
+{
+  "item": [
+    {
+      "id": "596732d1-4472-49e1-8bca-62b58a8bfa08",
+      "name": "Annual Reports",
+      "description": {
+        "content": "Agency annual FOIA reports as XML.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "40ac6f2d-def3-4fe6-9be6-d8cba09d6ebb",
+          "name": "Get an agency annual FOIA report",
+          "request": {
+            "name": "Get an agency annual FOIA report",
+            "description": {
+              "content": "Returns the agency's annual FOIA report XML for the given year.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "annual-report-xml",
+                ":agencyAbbreviation",
+                ":year"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "agencyAbbreviation",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "year",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/xml"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "418ab0cb-bfb2-4865-b4ea-eb88833306d1",
+              "name": "Annual report XML.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "annual-report-xml",
+                    ":agencyAbbreviation",
+                    ":year"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "agencyAbbreviation",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "year",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/xml"
+                }
+              ],
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>(string)</element>",
+              "cookie": [],
+              "_postman_previewlanguage": "xml"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.foia.gov",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-API-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "a265895b-bdaa-4957-a3ec-e1b6cd1662f3",
+    "name": "Freedom of Information Act (FOIA) Agency Components Annual Reports API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Public APIs published by FOIA.gov, including the Agency Components API (Drupal JSON:API) for browsing federal agencies and their FOIA components, and the Annual Report XML API for retrieving an agency's FOIA annual report. A separate Agency API specification defines how the FOIA.gov portal submits requests to participating agencies.\n\nContact Support:\n Name: National FOIA Portal\n Email: National.FOIAPortal@usdoj.gov",
+      "type": "text/plain"
+    }
+  }
+}

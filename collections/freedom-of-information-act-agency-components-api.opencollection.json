@@ -1,0 +1,93 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Freedom of Information Act (FOIA) Agency Components API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-API-Key",
+      "value": "{{X-API-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Agency Components",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List agency components",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.foia.gov/api/agency_components",
+            "params": [
+              {
+                "name": "fields[agency_component]",
+                "value": "",
+                "type": "query",
+                "description": "Sparse fieldset for agency_component."
+              },
+              {
+                "name": "fields[agency]",
+                "value": "",
+                "type": "query",
+                "description": "Sparse fieldset for agency."
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "Related resources to include (e.g., agency)."
+              }
+            ]
+          },
+          "docs": "List FOIA agency components. Follows the JSON:API specification (Drupal JSON:API module)."
+        },
+        {
+          "info": {
+            "name": "Get agency component",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.foia.gov/api/agency_components/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get agency component"
+        },
+        {
+          "info": {
+            "name": "Get an agency component's request form",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.foia.gov/api/agency_components/:id/request_form",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get an agency component's request form"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
