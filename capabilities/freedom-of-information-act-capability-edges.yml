@@ -1,0 +1,24 @@
+slug: freedom-of-information-act
+provider: Freedom of Information Act
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Public Sector & Government
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 1
+edges:
+- tag: Agency Submission
+  spec_file: freedom-of-information-act-agency-submission-api-openapi.yml
+  capability_id: BC-3220.40
+  capability_id_l1: BC-3220
+  capability_name: Service Request and Inquiry Handling
+  confidence: 0.9
+  evidence: POST /components/{id}/requests/  submitAgencyRequest  Submit a FOIA request to an agency component
+  reason: Operation submits a freedom-of-information request to a government agency, which is explicitly
+    within service request and inquiry handling (including freedom-of-information submissions).

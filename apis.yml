@@ -80,6 +80,9 @@ apis:
   - type: Documentation
     url: https://www.foia.gov/developer/
 common:
+  - type: CapabilityMap
+    url: capabilities/freedom-of-information-act-capability-edges.yml
+    name: Freedom of Information Act Business Capability Map
   - type: AgenticAccess
     url: agentic-access/freedom-of-information-act-agentic-access.yml
   - type: DomainSecurity
