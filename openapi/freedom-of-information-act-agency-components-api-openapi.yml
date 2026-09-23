@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Freedom of Information Act (FOIA) Agency Components API
   description: Public APIs published by FOIA.gov, including the Agency Components API (Drupal JSON:API) for browsing federal agencies and their FOIA components, and the Annual Report XML API for retrieving an agency's FOIA annual report. A separate Agency API specification defines how the FOIA.gov portal submits requests to participating agencies.
