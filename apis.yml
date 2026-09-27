@@ -35,13 +35,14 @@ created: '2024-01-01'
 modified: '2026-05-19'
 specificationVersion: '0.23'
 tags:
-  - Federal-Government
+  - Federal Government
   - FOIA
   - Transparency
 tags_raw:
   - Federal Government
   - FOIA
   - Transparency
+  - Federal-Government
 apis:
 - aid: freedom-of-information-act:freedom-of-information-act-agency-components-api
   name: Freedom of Information Act Agency Components API
