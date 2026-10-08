@@ -82,6 +82,12 @@ apis:
   - type: Documentation
     url: https://www.foia.gov/developer/
 common:
+  - type: Plans
+    url: plans/freedom-of-information-act-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/freedom-of-information-act-rate-limits.yml
+  - type: FinOps
+    url: finops/freedom-of-information-act-finops.yml
   - type: CapabilityMap
     url: capabilities/freedom-of-information-act-capability-edges.yml
     name: Freedom of Information Act Business Capability Map
